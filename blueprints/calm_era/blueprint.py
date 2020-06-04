@@ -5,6 +5,7 @@ Generated blueprint DSL (.py)
 """
 
 from calm.dsl.builtins import *  # no_qa
+import json
 
 # Secret Variables
 BP_CRED_db_server_cred_KEY = read_local_file("BP_CRED_db_server_cred_KEY")
