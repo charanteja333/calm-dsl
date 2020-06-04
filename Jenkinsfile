@@ -8,6 +8,7 @@ pipeline {
     stage('Setup Calm DSL') {
       steps {
         script {
+           sh 'git clean -fdx'
            git_commit = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
            git_branch = sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
 
