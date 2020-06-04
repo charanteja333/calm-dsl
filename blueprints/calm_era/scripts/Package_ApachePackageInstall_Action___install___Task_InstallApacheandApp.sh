@@ -6,7 +6,6 @@ set -ex
 sudo yum -y update
 sudo yum -y install epel-release centos-release-scl
 sudo yum -y install httpd gcc psacct mod_proxy_uwsgi
-sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm 
 sudo yum -y install git2u-all rh-python36
 sudo yum clean all
 
