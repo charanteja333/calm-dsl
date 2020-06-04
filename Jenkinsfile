@@ -26,9 +26,9 @@ pipeline {
              sh "git clone git@github.com:nutanix/calm-dsl.git"
              sh "cd calm-dsl && make clean"
              sh "cd calm-dsl && make _init_centos"
-             sh "cd calm-dsl && sudo yum install -y python3-devel"
+             sh "cd calm-dsl && sudo yum install -y python3-devel"*/
              sh "cd calm-dsl && make dev"
-             sh "cd calm-dsl && make dist"*/
+             sh "cd calm-dsl && make dist"
            }
         }
       }
@@ -45,7 +45,7 @@ pipeline {
     stage('Launch blueprint') {
       steps {
         script {
-           sh "source /root/calm-dsl/venv/bin/activate && calm launch bp --file lamp-v4.py --name LAMP_FROM_DSL_${env.GIT_COMMIT}"
+           sh "source /root/calm-dsl/venv/bin/activate && calm launch bp LAMP_FROM_DSL_${env.GIT_COMMIT} --app_name LAMP_APP_${env.GIT_COMMIT}"
         }
       }
     }
