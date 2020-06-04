@@ -33,6 +33,6 @@ resources:
     nic_type: NORMAL_NIC
     subnet_reference:
       kind: subnet
-      uuid: dfff89a5-b759-4396-bf34-0b19be6320bd
+      uuid: e3a425bf-663b-40ec-9732-cfa6e8e8bf48
   num_sockets: 2
   num_vcpus_per_socket: 1
