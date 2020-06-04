@@ -7,7 +7,7 @@ url     = "https://@@{ERA_IP}@@/era/v0.8/operations/@@{OPERATION_ID}@@"
 resp_out = {}
 
 # Monitor the operation
-for x in range(20):
+for x in range(100):
   
   sleep(30)
   resp = urlreq(url, verb='GET', auth='BASIC', user=era_user, passwd=era_pass, headers=headers)
