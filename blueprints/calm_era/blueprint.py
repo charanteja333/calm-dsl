@@ -326,21 +326,6 @@ class HAProxyPackageInstall(Package):
             target=ref(HAProxy),
         )
 
-CENTOS_7_CLOUD = vm_disk_package(
-    name="CENTOS_7_CLOUD",
-    description="",
-    config={
-        "image": {
-            "name": "CentOS-7-x86_64-1810.qcow2",
-            "type": "DISK_IMAGE",
-            "source": "http://download.nutanix.com/calm/CentOS-7-x86_64-1810.qcow2",
-            "architecture": "X86_64",
-        },
-        "product": {"name": "CentOS", "version": "7"},
-        "checksum": {},
-    },
-)
-
 
 class f6be2786_deployment(Deployment):
     """f6be2786_deployment Deployment description"""
@@ -989,8 +974,7 @@ class DemoCalmEraSKO2019(Blueprint):
     packages = [
         PostgresPackage,
         ApachePackageInstall,
-        HAProxyPackageInstall,
-        CENTOS_7_CLOUD,
+        HAProxyPackageInstall
     ]
     substrates = [PostgreSQL, ApacheVM, HAProxyVM]
     profiles = [Nutanix]
