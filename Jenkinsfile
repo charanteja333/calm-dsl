@@ -36,16 +36,16 @@ pipeline {
     stage('Create blueprint') {
       steps {
         script {
-           withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'MPI_REGRESSION_PC',usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']])
-           /*sh "source /root/calm-dsl/venv/bin/activate && calm -v init dsl -i ${params.PC_IP} -P ${params.PC_PORT} -u ${USERNAME} -p ${PASSWORD} -pj ${params.PC_PROJECT}"*/
-           sh "cd blueprints/lamp && calm create bp --file lamp-v4.py --name LAMP_FROM_DSL_${env.GIT_COMMIT}"
+           /*withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'MPI_REGRESSION_PC',usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']])
+           sh "source /root/calm-dsl/venv/bin/activate && calm -v init dsl -i ${params.PC_IP} -P ${params.PC_PORT} -u ${USERNAME} -p ${PASSWORD} -pj ${params.PC_PROJECT}"*/
+           sh "source /root/calm-dsl/venv/bin/activate && cd blueprints/lamp && calm create bp --file lamp-v4.py --name LAMP_FROM_DSL_${env.GIT_COMMIT}"
         }
       }
     }
     stage('Launch blueprint') {
       steps {
         script {
-           sh "calm launch bp --file lamp-v4.py --name LAMP_FROM_DSL_${env.GIT_COMMIT}"
+           sh "source /root/calm-dsl/venv/bin/activate && calm launch bp --file lamp-v4.py --name LAMP_FROM_DSL_${env.GIT_COMMIT}"
         }
       }
     }

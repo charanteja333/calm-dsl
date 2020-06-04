@@ -126,7 +126,7 @@ class MySQLSubstrate(Substrate):
         "address": "@@{platform.status.resources.nic_list[0].ip_endpoint_list[0].ip}@@",
         "disabled": False,
     }
-    readiness_probe["credential"] = ref(default_credential)
+    readiness_probe.credential = ref(default_credential)
 
 
 class ApachePHPSubstrate(Substrate):
@@ -146,7 +146,7 @@ class ApachePHPSubstrate(Substrate):
         "address": "@@{platform.status.resources.nic_list[0].ip_endpoint_list[0].ip}@@",
         "disabled": False,
     }
-    readiness_probe["credential"] = ref(default_credential)
+    readiness_probe.credential = ref(default_credential)
 
 
 class HAProxySubstrate(Substrate):
@@ -166,7 +166,7 @@ class HAProxySubstrate(Substrate):
         "address": "@@{platform.status.resources.nic_list[0].ip_endpoint_list[0].ip}@@",
         "disabled": False,
     }
-    readiness_probe["credential"] = ref(default_credential)
+    readiness_probe.credential = ref(default_credential)
 
 
 class MySQLDeployment(Deployment):
