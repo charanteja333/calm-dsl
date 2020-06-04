@@ -21,13 +21,14 @@ pipeline {
            env.GIT_BRANCH = git_branch
            env.GIT_COMMIT = short_commit
            dir('/root/') {
-             sh "rm -rf calm-dsl"
+             sh "cd /root/calm-dsl && git pull"
+             /*sh "rm -rf calm-dsl"
              sh "git clone git@github.com:nutanix/calm-dsl.git"
              sh "cd calm-dsl && make clean"
              sh "cd calm-dsl && make _init_centos"
              sh "cd calm-dsl && sudo yum install -y python3-devel"
              sh "cd calm-dsl && make dev"
-             sh "cd calm-dsl && make dist"
+             sh "cd calm-dsl && make dist"*/
            }
         }
       }
@@ -36,7 +37,7 @@ pipeline {
       steps {
         script {
            withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'MPI_REGRESSION_PC',usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']])
-           sh "source /root/calm-dsl/venv/bin/activate && calm -v init dsl -i ${params.PC_IP} -P ${params.PC_PORT} -u ${USERNAME} -p ${PASSWORD} -pj ${params.PC_PROJECT}"
+           /*sh "source /root/calm-dsl/venv/bin/activate && calm -v init dsl -i ${params.PC_IP} -P ${params.PC_PORT} -u ${USERNAME} -p ${PASSWORD} -pj ${params.PC_PROJECT}"*/
            sh "cd blueprints/lamp && calm create bp --file lamp-v4.py --name LAMP_FROM_DSL_${env.GIT_COMMIT}"
         }
       }
