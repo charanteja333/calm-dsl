@@ -364,7 +364,7 @@ class Nutanix(Profile):
     deployments = [f6be2786_deployment, f93c2be6_deployment, b85d1fdc_deployment]
 
     DB_NAME = CalmVariable.Simple(
-        "pg_prod_db",
+        "pg_prod_db_@@{calm_unique}@@",
         label="DB Name:",
         is_mandatory=False,
         is_hidden=False,
@@ -432,7 +432,7 @@ class Nutanix(Profile):
     )
 
     VM_NAME = CalmVariable.Simple(
-        "era_pg_db_server",
+        "era_pg_db_server_@@{calm_unique}@@",
         label="DB Server:",
         is_mandatory=False,
         is_hidden=False,
