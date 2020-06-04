@@ -61,20 +61,6 @@ class HAProxy(Service):
     pass
 
 
-CENTOS_7_CLOUD = vm_disk_package(
-    name="CENTOS_7_CLOUD",
-    description="",
-    config={
-        "image": {
-            "name": "CentOS-7-x86_64-1810.qcow2",
-            "type": "DISK_IMAGE",
-            "source": "http://download.nutanix.com/calm/CentOS-7-x86_64-1810.qcow2",
-            "architecture": "X86_64",
-        },
-        "product": {"name": "CentOS", "version": "7"},
-        "checksum": {},
-    },
-)
 
 
 class PostgreSQL(Substrate):
@@ -339,6 +325,21 @@ class HAProxyPackageInstall(Package):
             cred=ref(BP_CRED_db_server_cred),
             target=ref(HAProxy),
         )
+
+CENTOS_7_CLOUD = vm_disk_package(
+    name="CENTOS_7_CLOUD",
+    description="",
+    config={
+        "image": {
+            "name": "CentOS-7-x86_64-1810.qcow2",
+            "type": "DISK_IMAGE",
+            "source": "http://download.nutanix.com/calm/CentOS-7-x86_64-1810.qcow2",
+            "architecture": "X86_64",
+        },
+        "product": {"name": "CentOS", "version": "7"},
+        "checksum": {},
+    },
+)
 
 
 class f6be2786_deployment(Deployment):
