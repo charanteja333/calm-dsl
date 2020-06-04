@@ -60,6 +60,7 @@ class HAProxy(Service):
 
     pass
 
+
 CENTOS_7_CLOUD = vm_disk_package(
     name="CENTOS_7_CLOUD",
     description="",
@@ -263,7 +264,9 @@ class ApacheVM(Substrate):
 
     os_type = "Linux"
     provider_type = "AHV_VM"
-    provider_spec = read_ahv_spec("specs/ApacheVM_provider_spec.yaml", disk_packages={1: CENTOS_7_CLOUD})
+    provider_spec = read_ahv_spec(
+        "specs/ApacheVM_provider_spec.yaml", disk_packages={1: CENTOS_7_CLOUD}
+    )
     readiness_probe = {
         "connection_type": "SSH",
         "connection_port": 22,
@@ -982,7 +985,12 @@ class DemoCalmEraSKO2019(Blueprint):
     """DemoCalmEraSKO2019 Blueprint description"""
 
     services = [Postgres, Apache, HAProxy]
-    packages = [PostgresPackage, ApachePackageInstall, HAProxyPackageInstall, CENTOS_7_CLOUD]
+    packages = [
+        PostgresPackage,
+        ApachePackageInstall,
+        HAProxyPackageInstall,
+        CENTOS_7_CLOUD,
+    ]
     substrates = [PostgreSQL, ApacheVM, HAProxyVM]
     profiles = [Nutanix]
     credentials = [BP_CRED_db_server_cred, BP_CRED_era_web_cred]
