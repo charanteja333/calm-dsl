@@ -27,7 +27,7 @@ pipeline {
       steps {
         script {
            sh "source calm-dsl/venv/bin/activate && calm -v init dsl -i 10.44.19.140 -P 9440 -u admin -p regression -pj regression"
-           sh "cd blueprints/lamp && calm create bp --file lamp-v4.py --name LAMP_FROM_DSL_${env.GIT_COMMIT}"*/
+           sh "cd blueprints/lamp && calm create bp --file lamp-v4.py --name LAMP_FROM_DSL_${env.GIT_COMMIT}"
         }
       }
     }
