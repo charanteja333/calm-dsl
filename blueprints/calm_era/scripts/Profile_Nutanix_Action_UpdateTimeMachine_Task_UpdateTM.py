@@ -9,7 +9,7 @@ resp_out = {}
 payload = """
 {
     "name":"@@{NEW_TM_NAME}@@",
-    "description":"era_pg_db_tm",
+    "description":"era_pg_db_tm_@@{calm_unique}@@",
     "id":"@@{TM_ID}@@",
     "slaId":"@@{SLA_ID}@@",
     "schedule":{

@@ -464,7 +464,7 @@ class Nutanix(Profile):
     )
 
     TM_NAME = CalmVariable.Simple(
-        "era_pg_db_TM",
+        "era_pg_db_TM_@@{calm_unique}@@",
         label="Time Machine Name:",
         is_mandatory=False,
         is_hidden=False,
