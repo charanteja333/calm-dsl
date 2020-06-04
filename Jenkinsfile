@@ -5,9 +5,9 @@ pipeline {
     node { label 'dsl_cicd' }
   }
   parameters {
-    string(name: 'PC_IP', defaultValue: '10.44.19.140', description: 'Prism Central IP address')
+    string(name: 'PC_IP', defaultValue: 'nucalm-demo2.calm.nutanix.com', description: 'Prism Central IP address')
     string(name: 'PC_PORT', defaultValue: '9440', description: 'Prism Central port')
-    string(name: 'PC_PROJECT', defaultValue: 'regression', description: 'Calm project')
+    string(name: 'PC_PROJECT', defaultValue: 'default', description: 'Calm project')
   }
   stages {
     stage('Setup Calm DSL') {
@@ -38,14 +38,14 @@ pipeline {
         script {
            /*withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'MPI_REGRESSION_PC',usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']])
            sh "source /root/calm-dsl/venv/bin/activate && calm -v init dsl -i ${params.PC_IP} -P ${params.PC_PORT} -u ${USERNAME} -p ${PASSWORD} -pj ${params.PC_PROJECT}"*/
-           sh "source /root/calm-dsl/venv/bin/activate && cd blueprints/lamp && calm create bp --file lamp-v4.py --name LAMP_FROM_DSL_${env.GIT_COMMIT}"
+           sh "source /root/calm-dsl/venv/bin/activate && cd blueprints/calm_era && calm create bp --file blueprint.py --name Calm_Era_${env.GIT_COMMIT}"
         }
       }
     }
     stage('Launch blueprint') {
       steps {
         script {
-           sh "source /root/calm-dsl/venv/bin/activate && calm launch bp LAMP_FROM_DSL_${env.GIT_COMMIT} --app_name LAMP_APP_${env.GIT_COMMIT} -i"
+           sh "source /root/calm-dsl/venv/bin/activate && calm launch bp Calm_Era_${env.GIT_COMMIT} --app_name Calm_Era_${env.GIT_COMMIT} -i"
         }
       }
     }
