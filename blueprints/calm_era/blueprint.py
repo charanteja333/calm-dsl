@@ -193,7 +193,7 @@ class PostgreSQL(Substrate):
                                 "dayOfMonth": "9",
                             },
                             "yearlySchedule": {
-                                "enabled": false,
+                                "enabled": False,
                                 "dayOfMonth": 31,
                                 "month": "DECEMBER",
                             },
@@ -234,7 +234,7 @@ class PostgreSQL(Substrate):
             target=ref(PostgreSQL),
         )
         CalmTask.HTTP.get(
-            "https://@@{ERA_IP}@@/era/v0.8/dbservers/name/@@{VM_NAME}@@?detailed=false&load-drive=false",
+            "https://@@{ERA_IP}@@/era/v0.8/dbservers/name/@@{VM_NAME}@@?detailed=False&load-drive=False",
             headers={"Authorization": "Bearer @@{TOKEN}@@"},
             secret_headers={},
             content_type="application/json",
