@@ -77,7 +77,7 @@ class PostgreSQL(Substrate):
         "address": "@@{ip_address}@@",
         "disabled": True,
     }
-    readiness_probe["credential"] = ref(BP_CRED_db_server_cred)
+    readiness_probe.credential = ref(BP_CRED_db_server_cred)
 
     @action
     def __pre_create__():
@@ -259,7 +259,7 @@ class ApacheVM(Substrate):
         "address": "@@{platform.status.resources.nic_list[0].ip_endpoint_list[0].ip}@@",
         "disabled": False,
     }
-    readiness_probe["credential"] = ref(BP_CRED_db_server_cred)
+    readiness_probe.credential = ref(BP_CRED_db_server_cred)
 
 
 class HAProxyVM(Substrate):
@@ -280,7 +280,7 @@ class HAProxyVM(Substrate):
         "address": "@@{platform.status.resources.nic_list[0].ip_endpoint_list[0].ip}@@",
         "disabled": False,
     }
-    readiness_probe["credential"] = ref(BP_CRED_db_server_cred)
+    readiness_probe.credential = ref(BP_CRED_db_server_cred)
 
 
 class PostgresPackage(Package):
