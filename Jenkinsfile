@@ -30,7 +30,8 @@ pipeline {
     stage('Create blueprint') {
       steps {
         script {
-           sh "source /root/calm-dsl/venv/bin/activate && calm -v init dsl -i 10.44.19.140 -P 9440 -u admin -p regression -pj regression"
+           CALM_CRED = credentials('MPI_REGRESSION_PC')
+           sh "source /root/calm-dsl/venv/bin/activate && calm -v init dsl -i ${PC_IP} -P ${PC_PORT} -u admin -p ${CALM_CRED} -pj ${PC_PROJECT}"
            sh "cd blueprints/lamp && calm create bp --file lamp-v4.py --name LAMP_FROM_DSL_${env.GIT_COMMIT}"
         }
       }
@@ -42,5 +43,10 @@ pipeline {
         }
       }
     }
+  }
+  parameters {
+    string(name: 'PC_IP', defaultValue: '10.44.19.140', description: 'Prism Central IP address')
+    string(name: 'PC_PORT', defaultValue: '9440', description: 'Prism Central port')
+    string(name: 'PC_PROJECT', defaultValue: 'regression', description: 'Calm project')
   }
 }
