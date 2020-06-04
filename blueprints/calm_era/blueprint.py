@@ -181,14 +181,14 @@ class PostgreSQL(Substrate):
                                 "seconds": 0,
                             },
                             "continuousSchedule": {
-                                "enabled": true,
+                                "enabled": True,
                                 "logBackupInterval": 30,
                                 "snapshotsPerDay": 1,
                             },
-                            "weeklySchedule": {"enabled": true, "dayOfWeek": "FRIDAY"},
-                            "monthlySchedule": {"enabled": true, "dayOfMonth": "9"},
+                            "weeklySchedule": {"enabled": True, "dayOfWeek": "FRIDAY"},
+                            "monthlySchedule": {"enabled": True, "dayOfMonth": "9"},
                             "quartelySchedule": {
-                                "enabled": true,
+                                "enabled": True,
                                 "startMonth": "JANUARY",
                                 "dayOfMonth": "9",
                             },
@@ -199,7 +199,7 @@ class PostgreSQL(Substrate):
                             },
                         },
                         "tags": [],
-                        "autoTuneLogDrive": true,
+                        "autoTuneLogDrive": True,
                     },
                     "provisionInfo": [
                         {"name": "application_type", "value": "postgres_database"},
@@ -209,7 +209,7 @@ class PostgreSQL(Substrate):
                         {"name": "proxy_read_port", "value": "5001"},
                         {"name": "database_size", "value": "200"},
                         {"name": "working_dir", "value": "/tmp"},
-                        {"name": "auto_tune_staging_drive", "value": true},
+                        {"name": "auto_tune_staging_drive", "value": True},
                         {"name": "dbserver_name", "value": "@@{VM_NAME}@@"},
                         {
                             "name": "ssh_public_key",
@@ -635,7 +635,7 @@ class Nutanix(Profile):
         CalmTask.HTTP.post(
             "https://@@{ERA_IP}@@:8443/era/v0.8/tms/@@{TM_ID}@@/log-catchups",
             body=json.dumps(
-                {"actionHeader": [{"name": "switch_log", "value": "true"}]}
+                {"actionHeader": [{"name": "switch_log", "value": "True"}]}
             ),
             headers={"Authorization": "Bearer @@{TOKEN}@@"},
             secret_headers={},
@@ -746,7 +746,7 @@ class Nutanix(Profile):
             target=ref(Postgres),
         )
         CalmTask.HTTP.delete(
-            "https://@@{ERA_IP}@@:8443/era/v0.8/databases/@@{DB_ID}@@?storage-cleanup=true&tm-cleanup=true",
+            "https://@@{ERA_IP}@@:8443/era/v0.8/databases/@@{DB_ID}@@?storage-cleanup=True&tm-cleanup=True",
             body=json.dumps({}),
             headers={"Authorization": "Bearer @@{TOKEN}@@"},
             secret_headers={},
@@ -786,7 +786,7 @@ class Nutanix(Profile):
             target=ref(Postgres),
         )
         CalmTask.HTTP.delete(
-            "https://@@{ERA_IP}@@:8443/era/v0.8/dbservers/@@{DB_SERVER_ID}@@?remove=true",
+            "https://@@{ERA_IP}@@:8443/era/v0.8/dbservers/@@{DB_SERVER_ID}@@?remove=True",
             body=json.dumps({}),
             headers={"Authorization": "Bearer @@{TOKEN}@@"},
             secret_headers={},
