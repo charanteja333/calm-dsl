@@ -471,59 +471,6 @@ class Nutanix(Profile):
     )
 
     @action
-    def CreateSLA(display_name="Create SLA"):
-        """CreateSLA Action description"""
-
-        SLANAME = CalmVariable.Simple(
-            "SLA1", label="", is_mandatory=False, is_hidden=False, runtime=True
-        )
-        SLA_DESCRIPTION = CalmVariable.Simple(
-            "Test SLA1", label="", is_mandatory=False, is_hidden=False, runtime=True
-        )
-        CONTINUOUS_RETENTION = CalmVariable.Simple(
-            "7", label="", is_mandatory=False, is_hidden=False, runtime=True
-        )
-        DAILY_RETENTION = CalmVariable.Simple(
-            "30", label="", is_mandatory=False, is_hidden=False, runtime=True
-        )
-        WEEKLY_RETENTION = CalmVariable.Simple(
-            "8", label="", is_mandatory=False, is_hidden=False, runtime=True
-        )
-        MONTHLY_RETENTION = CalmVariable.Simple(
-            "6", label="", is_mandatory=False, is_hidden=False, runtime=True
-        )
-        QUARTERLY_RETENTION = CalmVariable.Simple(
-            "1", label="", is_mandatory=False, is_hidden=False, runtime=True
-        )
-        YEARLY_RETENTION = CalmVariable.Simple(
-            "0", label="", is_mandatory=False, is_hidden=False, runtime=True
-        )
-        CalmTask.HTTP.post(
-            "https://@@{ERA_IP}@@:8443/era/v0.8/slas",
-            body=json.dumps(
-                {
-                    "name": "@@{SLANAME}@@",
-                    "description": "@@{SLA_DESCRIPTION}@@",
-                    "continuousRetention": "@@{CONTINUOUS_RETENTION}@@",
-                    "dailyRetention": "@@{DAILY_RETENTION}@@",
-                    "weeklyRetention": "@@{WEEKLY_RETENTION}@@",
-                    "monthlyRetention": "@@{MONTHLY_RETENTION}@@",
-                    "quarterlyRetention": "@@{QUARTERLY_RETENTION}@@",
-                    "yearlyRetention": "@@{YEARLY_RETENTION}@@",
-                    "systemSla": "true",
-                }
-            ),
-            headers={"Authorization": "Bearer @@{TOKEN}@@"},
-            secret_headers={},
-            content_type="application/json",
-            verify=False,
-            status_mapping={200: True},
-            response_paths={},
-            name="Create SLA",
-            target=ref(Postgres),
-        )
-
-    @action
     def UpdateTimeMachine(display_name="Update Time Machine"):
         """UpdateTimeMachine Action description"""
 
