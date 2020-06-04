@@ -1,7 +1,7 @@
 #!groovy
 /* calm DSL CI/CD job for jenkins */
 
-@Library('calm-jenkins-pipeline-library@master') _
+@Library('calm-jenkins-pipeline-library@master')
 
 pipeline {
   agent {
