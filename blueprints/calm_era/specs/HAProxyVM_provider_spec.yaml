@@ -1,5 +1,4 @@
 availability_zone_reference: null
-backup_policy: null
 categories: ''
 cluster_reference: null
 name: HaProxy-@@{calm_array_index}@@-@@{calm_time}@@
