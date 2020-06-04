@@ -45,7 +45,7 @@ pipeline {
     stage('Launch blueprint') {
       steps {
         script {
-           sh "source /root/calm-dsl/venv/bin/activate && calm launch bp LAMP_FROM_DSL_${env.GIT_COMMIT} --app_name LAMP_APP_${env.GIT_COMMIT}"
+           sh "source /root/calm-dsl/venv/bin/activate && calm launch bp LAMP_FROM_DSL_${env.GIT_COMMIT} --app_name LAMP_APP_${env.GIT_COMMIT} -i"
         }
       }
     }

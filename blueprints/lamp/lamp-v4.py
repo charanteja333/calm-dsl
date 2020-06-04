@@ -206,7 +206,7 @@ class Default(Profile):
 
     deployments = [MySQLDeployment, ApachePHPDeployment, HAProxyDeployment]
     # runtime variable for user to provide MySQL database password
-    MYSQL_PASSWORD = Variable.Simple.Secret("", runtime=True)
+    MYSQL_PASSWORD = Variable.Simple.Secret("P@ssw0rd", runtime=True)
 
     """
     These custom profile actions control our ScaleOut and ScaleIn
