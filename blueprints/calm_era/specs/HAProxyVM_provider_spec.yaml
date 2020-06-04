@@ -8,8 +8,9 @@ resources:
         device_index: 0
   disk_list:
   - data_source_reference:
-      kind: app_package
-      name: CENTOS_7_CLOUD
+      kind: image
+      name: CentOS-7-x86_64-1810
+      uuid: 653cda0e-f15f-4dfc-995b-04abd1bb1bd8
     device_properties:
       device_type: DISK
       disk_address:
