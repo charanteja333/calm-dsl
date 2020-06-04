@@ -251,7 +251,7 @@ class ApacheVM(Substrate):
     os_type = "Linux"
     provider_type = "AHV_VM"
     provider_spec = read_ahv_spec(
-        "specs/ApacheVM_provider_spec.yaml", disk_packages={1: CENTOS_7_CLOUD}
+        "specs/ApacheVM_provider_spec.yaml", disk_packages={}
     )
     readiness_probe = {
         "connection_type": "SSH",
@@ -272,7 +272,7 @@ class HAProxyVM(Substrate):
     os_type = "Linux"
     provider_type = "AHV_VM"
     provider_spec = read_ahv_spec(
-        "specs/HAProxyVM_provider_spec.yaml", disk_packages={1: CENTOS_7_CLOUD}
+        "specs/HAProxyVM_provider_spec.yaml", disk_packages={}
     )
     readiness_probe = {
         "connection_type": "SSH",
